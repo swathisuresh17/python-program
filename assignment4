@@ -1,0 +1,30 @@
+Creating 3 tables namely employee,designation, admin joining these tables and inserting the data into the target table.
+
+create  table  employee (empno int ,doj date,empname varchar(10),department varchar(10));
+
+create table designation (empno int,doj date ,department varchar(10),designation varchar(10));
+
+create table admin(empno int,empname varchar(50),doj date,phoneno int,department varchar(10),address varchar(10));
+
+create table target(empno int,empname varchar(10),doj date,department varchar(10),address varchar(10),phno int ,designation varchar(10));
+
+Inserting into target table without any conditon
+INSERT INTO target(empno,empname,doj,department,address,phoneno,designation) 
+SELECT  e.empno, e.empname,e.doj,e.department,d.designation,a.phoneno,a.address  
+FROM employee e inner join designation d on e.empno=d.empno
+inner join admin a on e.empname=a.empname ;
+
+Inserting into target table with condition
+INSERT INTO target(empno,empname,doj,department,address,phoneno,designation) 
+SELECT  e.empno, e.empname,e.doj,e.department,d.designation,a.phoneno,a.address  
+FROM employee e inner join designation d on e.empno=d.empno
+inner join admin a on e.empname=a.empname where a.department='IT' ;
+
+Inserting into target table with  distinct values conditon
+INSERT INTO target(empno,empname,doj,department,designation,phoneno,address) 
+SELECT distinct e.empno, e.empname,e.doj,e.department, d.designation,a.phoneno,a.address  
+FROM employee e inner join designation d on e.empno=d.empno
+inner join admin a on e.empname=a.empname where e.department='IT' ;
+
+
+
