@@ -1,0 +1,41 @@
+import csv
+
+f1=csv.writer(open('emp.csv','w'))
+f1.writerows([('sam',22,22000),('dany',34,34000),('gowz',21,21000),('ram',40,40000),
+('sita',20,20000),('agi',26,26000),('padhu',40,40000),('swatz',27,27000),('shenz',40,40000),('kotz',25,25000)])
+
+f1=open('emp.csv','r')
+reader=csv.reader(f1)
+for row in reader:
+  print(row)
+
+
+
+import csv
+f2=csv.writer(open('people.csv','w'))
+f2.writerows([('sam',22,22000),('mark',34,34000),('gowz',21,21000),('ram',20,40000),('sita',20,20000),
+('agi',26,25000),('padhu',40,40000),('swatz',27,50000),('shenz',40,40000),('siva',25,25000)])
+
+f2=open('people.csv','r')
+reader=csv.reader(f2)
+for row in reader:
+  print(row)
+
+
+
+f1=open('emp.csv','r')
+file1=f1.readlines()
+f2=open('people.csv','r')
+file2=f2.readlines()
+
+o1=open('diff.csv','w')
+for line in file2:
+  if line not in file1:
+    print(line)
+
+
+o2=open('same.csv','w')
+for line in file2:
+  if line in file1:
+    print(line)
+
