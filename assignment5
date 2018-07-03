@@ -1,0 +1,26 @@
+create  table  student_details (rollno int ,stud_name char(40),year_joining date,department varchar(10));
+
+create table sports(rollno int,stud_name char(40),department varchar(10),sports varchar(10));
+
+create table admin(rollno int,stud_name char(50),year_joining date,phoneno int,department varchar(10),address varchar(10));
+
+create table target(rollno int,stud_name char(50),doj date,department varchar(10),address varchar(10),phoneno int ,sports varchar(10));
+
+Inserting into target table without any conditon
+
+INSERT INTO target(rollno,stud_name,doj,department,address,phoneno,sports) 
+SELECT  d.rollno, d.stud_name,d.doj,d.department,a.address,a.phoneno,s.sports,
+FROM student_details d inner join sports s on d.rollno=s.rollno
+inner join admin a on d.rollno=a.rollno ;
+
+Inserting into target table with condition
+INSERT INTO target(rollno,stud_name,doj,department,address,phoneno,sports) 
+SELECT  d.rollno, d.stud_name,d.doj,d.department,a.address,a.phoneno,s.sports,
+FROM student_details d inner join sports s on d.rollno=s.rollno
+inner join admin a on d.rollno=a.rollno where d.department='IT' ;
+
+Inserting into target table with  distinct values conditon
+INSERT INTO target(rollno,stud_name,doj,department,address,phoneno,sports) 
+SELECT  distinct d.rollno, d.stud_name,d.doj,d.department,a.address,a.phoneno,s.sports,
+FROM student_details d inner join sports s on d.rollno=s.rollno
+inner join admin a on d.rollno=a.rollno where d.department='IT' ;
