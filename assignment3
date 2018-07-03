@@ -1,0 +1,22 @@
+ASSIGNMENT:
+INNER JOIN OF 3 TABLES :
+
+SELECT c.customername ,c.address,o.shipperid,d.orderdetailid, o.orderid from customers c
+inner join orders o on c.customerid=o.customerid inner join orderdetails d 
+on o.orderid= d.orderid order by o.orderid;
+
+
+LEFT JOIN:
+SELECT c.customername ,c.address,o.shipperid,d.orderdetailid, o.orderid from customers c LEFT join orders o
+ on c.customerid=o.customerid LEFT join orderdetails d on o.orderid= d.orderid order by o.orderid;
+
+RIGHT JOIN:
+SELECT c.customername ,c.address,o.shipperid,d.orderdetailid, o.orderid from customers c RIGHT join orders o 
+ON c.customerid=o.customerid RIGHT join orderdetails d on o.orderid= d.orderid order by o.orderid;
+
+FULL OUTER  JOIN:
+SELECT c.customername ,c.address,o.shipperid,d.orderdetailid, o.orderid from customers c FULL join orders o 
+ON c.customerid=o.customerid FULL join orderdetails d on o.orderid= d.orderid order by o.orderid;
+
+SELF JOIN:
+SELECT A.CUSTOMERID,A.CUSTOMERNAME,B.CUSTOMERID,B.CUSTOMERNAME,A.CITY,A.COUNTRY FROM CUSTOMERS A,CUSTOMERS B WHERE A.CUSTOMERID <> B.CUSTOMERID AND A.CITY =B.CITY ;
