@@ -1,0 +1,127 @@
+ASSIGNMENT
+
+1.Create a student table with the following columns.
+Register No ,Name,Subject 1,Subject 2,Subject 3,Subject 4,Subject 5 ,Total, Result ,Rank.
+
+create table student_details (regno int,name varchar(10),sub1 int,sub2 int,sub3 int,sub4 int,sub5 int);
+
+2. Insert 20 Records into Student table (insert should be Subject 5). Other three fields should be populated based on the below condition.
+
+insert into student_details values(1,'swathi',100,80,60,50,60);
+
+insert into student_details values(2,'kothai',100,70,60,50,60);
+
+insert into student_details values(3,'aarthi',100,30,60,50,60);
+
+insert into student_details values(4,'rajitha',100,50,60,50,60);
+
+insert into student_details values(5,'anagha',100,80,20,50,60);
+
+insert into student_details values(6,'alka',100,80,60,90,60);
+
+insert into student_details values(7,'prithivi',100,80,10,50,60);
+
+insert into student_details values(8,'ganesh',100,80,70,50,60);
+
+insert into student_details values(9,'sachin',100,80,90,90,60);
+
+insert into student_details values(10,'padma',70,80,60,50,60)
+;
+insert into student_details values(11,'anand',30,80,60,50,60);
+
+insert into student_details values(12,'preethi',100,80,90,50,60);
+
+insert into student_details values(13,'vinisha',100,40,50,50,60);
+
+insert into student_details values(14,'ram',100,80,30,50,60);
+
+insert into student_details values(15,'raj',100,80,90,70,50);
+
+insert into student_details values(16,'raji',30,80,50,50,50);
+
+insert into student_details values(17,'jai',60,60,60,50,60);
+insert into student_details values(18,'mac',100,70,40,30,60);
+
+insert into student_details values(19,'tom',100,80,30,30,30);
+
+insert into student_details values(20,'deepak',100,40,40,50,40);
+
+3. Sum all the subjects mark and store the values into the total field.
+
+alter table student_details add total int;
+
+update student_details set total=(sub1+sub2+sub3+sub4+sub5);
+
+4.Check each subject >=35 set Result as "Pass" else "Fail"
+alter table student_details add result varchar(10);
+
+
+update student_details 
+set result=
+
+case
+ 
+when sub1>=35 and sub2>=35 and sub3>=35 and sub4>=35 and  sub5>=35 then "pass"
+
+when sub1<35 or sub2<35 or sub3<35 or sub4<35 or sub5<35 then "fail" 
+end ;
+                                           
+
+5.Set the Rank to as 0 ,if the Results is "Fail"
+
+update student_details set rank=0 where result='fail';
+
+
+Create a employee_monthly table with the following columns
+
+1.Employee No,Name,Doj,No.of Days worked, Salary, Bonus.
+
+create table employer (empno int,name varchar(10),doj date,no_of_days int);
+
+
+2.Insert 20 records into employee_monthly table(Emp No,Name,DOJ,No.ofDaysWorked).
+
+insert into employer values(1,'devi','1-01-2018',30);
+
+enpno	name	doj	     num_of_days
+1	devi	1-01-2018	30
+2	kavi	10-01-2018	20
+3	pavi	15-01-2018	15
+4	pari	15-01-2018	15
+5	hari	11-01-2018	19
+6	swari	11-01-2018	19
+7	swarna	5-01-2018	25
+8	warna	5-01-2018	25
+9	arna	3-01-2018	27
+10	aparna	3-01-2018	27
+11	harii	4-01-2018	26
+12	parii	6-01-2018	4
+13	jarii	7-01-2018	23
+14	karii	8-01-2018	22
+15	garii	9-01-2018	21
+16	darii	17-01-2018	13
+17	narii	19-01-2018	11
+18	barii	20-01-2018	10
+19	varu	14-01-2018	16
+20	tharun	18-01-2018	12
+
+3.Calculate salary based on the NoofdaysWorked and one day salary as 1000
+
+alter table employer add salary int;
+
+update employer set salary= 1000*num_of_days;
+
+4.Calculate bonus of 40%, if employee attended for 25 days
+
+alter table employer add bonus int;
+
+update employer set bonus=40*salary/100 where num_of_days>=25;
+
+5.Calculate bouns of 30% , if employee attended for 20 days.
+
+update employer set bonus=30*salary/100 where num_of_days>=20 and num_of_days<25;
+
+6.No bounus if employee less than 20 days.
+
+update employer set bonus=0 where num_of_days<20;
+
