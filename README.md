@@ -23,17 +23,10 @@ else:
  print(num,"is not an Armstrong number")
 
 7.program for displayng the powers of 2.
-terms = int(input("How many terms? "))
-
-result = list(map(lambda x: 2 ** x, range(terms)))
-
-
-
-print("The total terms is:",terms)
-
-for i in range(terms):
-  
- print("2 raised to power",i,"is",result[i])
+n=int(input("enter a number:"))
+for i in range (1,n+1):
+ a=i**2
+ print(i,'*','*','2','=',a)
 
 8.hcf and lcm
 x=int(input("enter a number"))
